@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Teacher - String Spark</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background Elements -->
+    <div class="background-animation">
+        <div class="floating-note note-1">♪</div>
+        <div class="floating-note note-2">♫</div>
+        <div class="floating-note note-3">♪</div>
+        <div class="floating-note note-4">♬</div>
+        <div class="floating-instrument violin"></div>
+        <div class="floating-instrument piano"></div>
+        <div class="floating-instrument guitar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">String Spark</span>
+                <span class="logo-icon">🎵</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="become_teacher.html" class="nav-link active">Become a Teacher</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Teacher Application Section -->
+    <section class="teacher-application-section">
+        <div class="container">
+            <div class="application-header">
+                <h1>Become a String Spark Teacher</h1>
+                <p>Share your passion for music and inspire the next generation of young musicians!</p>
+                <div class="teacher-benefits">
+                    <div class="benefit">
+                        <span class="benefit-icon">🎓</span>
+                        <span>Gain Teaching Experience</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">💰</span>
+                        <span>Earn While Learning</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">🌟</span>
+                        <span>Make a Difference</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="benefit-icon">🤝</span>
+                        <span>Build Community</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="teacher-application-form" id="teacherApplicationForm">
+                <div class="form-grid">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h2>Personal Information</h2>
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherEmail">Email Address *</label>
+                            <input type="email" id="teacherEmail" name="teacherEmail" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeAge">Grade/Age *</label>
+                            <input type="text" id="gradeAge" name="gradeAge"
+                                placeholder="e.g., 11th Grade, 16 years old" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherSchool">School (if applicable)</label>
+                            <input type="text" id="teacherSchool" name="teacherSchool"
+                                placeholder="Name of your high school">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Musical Background -->
+                    <div class="form-section">
+                        <h2>Musical Background</h2>
+                        <div class="form-group">
+                            <label for="primaryInstrument">Primary Instrument *</label>
+                            <select id="primaryInstrument" name="primaryInstrument" required>
+                                <option value="">Select your primary instrument</option>
+                                <option value="violin">Violin</option>
+                                <option value="piano">Piano</option>
+                                <option value="guitar">Guitar</option>
+                                <option value="cello">Cello</option>
+                                <option value="flute">Flute</option>
+                                <option value="drums">Drums</option>
+                                <option value="saxophone">Saxophone</option>
+                                <option value="trumpet">Trumpet</option>
+                                <option value="clarinet">Clarinet</option>
+                                <option value="voice">Voice/Vocals</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Years of Experience *</label>
+                            <select id="experience" name="experience" required>
+                                <option value="">Select years of experience</option>
+                                <option value="1-2">1-2 years</option>
+                                <option value="3-4">3-4 years</option>
+                                <option value="5-6">5-6 years</option>
+                                <option value="7-8">7-8 years</option>
+                                <option value="9+">9+ years</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalInstruments">Additional Instruments</label>
+                            <input type="text" id="additionalInstruments" name="additionalInstruments"
+                                placeholder="List any other instruments you play">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Teaching Interest -->
+                    <div class="form-section full-width">
+                        <h2>About You</h2>
+                        <div class="form-group">
+                            <label for="aboutYou">Tell us a little about yourself *</label>
+                            <textarea id="aboutYou" name="aboutYou" rows="4"
+                                placeholder="Share your musical journey, what you're passionate about, and why you want to teach younger students..."
+                                required></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="teachingExperience">Teaching Experience (if any)</label>
+                            <textarea id="teachingExperience" name="teachingExperience" rows="3"
+                                placeholder="Have you taught music before? Tutored younger students? Led any musical activities?"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="availability">Availability</label>
+                            <textarea id="availability" name="availability" rows="3"
+                                placeholder="When are you typically available to teach? (e.g., weekday afternoons, Saturday mornings, etc.)"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="otherComments">Other Thoughts or Comments</label>
+                            <textarea id="otherComments" name="otherComments" rows="4"
+                                placeholder="Anything else you'd like us to know? Questions about the program? Special skills or interests?"></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Teaching Preferences -->
+                    <div class="form-section">
+                        <h2>Teaching Preferences</h2>
+                        <div class="form-group">
+                            <label>Preferred Student Age Groups *</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="ageGroups" value="3rd-grade" required>
+                                    <span class="checkbox-custom"></span>
+                                    3rd Grade
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="ageGroups" value="4th-grade" required>
+                                    <span class="checkbox-custom"></span>
+                                    4th Grade
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="ageGroups" value="5th-grade" required>
+                                    <span class="checkbox-custom"></span>
+                                    5th Grade
+                                </label>
+                            </div>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Lesson Types *</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="lessonTypes" value="group" required>
+                                    <span class="checkbox-custom"></span>
+                                    Group Lessons
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="lessonTypes" value="private" required>
+                                    <span class="checkbox-custom"></span>
+                                    Private Lessons
+                                </label>
+                            </div>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-note">
+                    <p><strong>Note:</strong> All applications will be reviewed by our team. We'll conduct a brief
+                        interview process and may ask for a short demonstration of your musical abilities. Don't worry -
+                        we're looking for passion and dedication, not perfection!</p>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                    <button type="reset" class="btn-secondary">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>String Spark</h3>
+                    <p>Inspiring young musicians through peer-to-peer education</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link instagram">📷</a>
+                        <a href="#" class="social-link youtube">🎥</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>General Contact: <a href="mailto:stringsparkcontact@gmail.com">stringsparkcontact@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 String Spark. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

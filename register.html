@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Child - String Spark</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background Elements -->
+    <div class="background-animation">
+        <div class="floating-note note-1">♪</div>
+        <div class="floating-note note-2">♫</div>
+        <div class="floating-note note-3">♪</div>
+        <div class="floating-note note-4">♬</div>
+        <div class="floating-instrument violin"></div>
+        <div class="floating-instrument piano"></div>
+        <div class="floating-instrument guitar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">String Spark</span>
+                <span class="logo-icon">🎵</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="register.html" class="nav-link active">Register</a></li>
+                <li><a href="become_teacher.html" class="nav-link">Become a Teacher</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-header">
+                <h1>Register Your Child</h1>
+                <p>Start your child's musical journey with String Spark today!</p>
+            </div>
+
+            <form class="registration-form" id="registrationForm">
+                <div class="form-grid">
+                    <!-- Parent/Guardian Information -->
+                    <div class="form-section">
+                        <h2>Parent/Guardian Information</h2>
+                        <div class="form-group">
+                            <label for="parentName">Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Student Information -->
+                    <div class="form-section">
+                        <h2>Student Information</h2>
+                        <div class="form-group">
+                            <label for="studentName">Student Name *</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="instrument">Student's Instrument *</label>
+                            <select id="instrument" name="instrument" required>
+                                <option value="">Select an instrument</option>
+                                <option value="violin">Violin</option>
+                                <option value="piano">Piano</option>
+                                <option value="guitar">Guitar</option>
+                                <option value="cello">Cello</option>
+                                <option value="flute">Flute</option>
+                                <option value="drums">Drums</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeLevel">Grade Level *</label>
+                            <select id="gradeLevel" name="gradeLevel" required>
+                                <option value="">Select grade level</option>
+                                <option value="3">3rd Grade</option>
+                                <option value="4">4th Grade</option>
+                                <option value="5">5th Grade</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">Student's Elementary School *</label>
+                            <input type="text" id="school" name="school" required>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Preferences -->
+                    <div class="form-section">
+                        <h2>Lesson Preferences</h2>
+                        <div class="form-group">
+                            <label for="preferredTimes">Preferred Times/Days *</label>
+                            <textarea id="preferredTimes" name="preferredTimes" rows="4"
+                                placeholder="Please let us know your preferred days and times for lessons (e.g., Mondays 4-6 PM, Saturdays mornings, etc.)"
+                                required></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lessonType">Lesson Type Preference *</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="lessonType" value="group" required>
+                                    <span class="radio-custom"></span>
+                                    Group Lessons
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="lessonType" value="private" required>
+                                    <span class="radio-custom"></span>
+                                    Private Lessons
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="lessonType" value="both" required>
+                                    <span class="radio-custom"></span>
+                                    Both (we'll discuss options)
+                                </label>
+                            </div>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <!-- Additional Comments -->
+                    <div class="form-section full-width">
+                        <h2>Additional Information</h2>
+                        <div class="form-group">
+                            <label for="comments">Any Extra Comments *</label>
+                            <textarea id="comments" name="comments" rows="5"
+                                placeholder="Tell us about your child's musical experience, interests, learning style, or any other information you'd like us to know..."
+                                required></textarea>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Register My Child</button>
+                    <button type="reset" class="btn-secondary">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>String Spark</h3>
+                    <p>Inspiring young musicians through peer-to-peer education</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link instagram">📷</a>
+                        <a href="#" class="social-link youtube">🎥</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>General Contact: <a href="mailto:stringsparkcontact@gmail.com">stringsparkcontact@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 String Spark. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
