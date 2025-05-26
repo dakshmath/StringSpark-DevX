@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Mobile Navigation Menu Toggle
     setupMobileNav();
-    
+
     // Add animation classes to elements as they come into view
     setupScrollAnimations();
-    
+
     // Add form validation for forms on the site
     setupFormValidation();
-    
+
     // Setup specific page functionality
     setupPageSpecificFunctionality();
 });
@@ -19,7 +19,7 @@ function setupMobileNav() {
     // Create and append hamburger menu if it doesn't exist
     const navContainer = document.querySelector('.nav-container');
     let hamburger = document.querySelector('.hamburger');
-    
+
     if (!hamburger && window.innerWidth <= 768) {
         hamburger = document.createElement('div');
         hamburger.className = 'hamburger';
@@ -30,16 +30,16 @@ function setupMobileNav() {
         `;
         navContainer.appendChild(hamburger);
     }
-    
+
     // Add event listener to hamburger menu
     if (hamburger) {
         const navMenu = document.querySelector('.nav-menu');
-        
+
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when a nav link is clicked
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -48,7 +48,7 @@ function setupMobileNav() {
             });
         });
     }
-    
+
     // Adjust nav on window resize
     window.addEventListener('resize', () => {
         const navMenu = document.querySelector('.nav-menu');
@@ -70,7 +70,7 @@ function setupMobileNav() {
 function setupScrollAnimations() {
     // Add fadeIn animation classes to section titles and content
     const animateElements = document.querySelectorAll('.section-title, .reason-card, .service-card, .testimonial-card');
-    
+
     // Create an Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
@@ -86,7 +86,7 @@ function setupScrollAnimations() {
     }, {
         threshold: 0.1
     });
-    
+
     // Observe each element
     animateElements.forEach(element => {
         observer.observe(element);
@@ -100,7 +100,7 @@ function setupFormValidation() {
     // Teacher Application Form Validation
     const teacherForm = document.getElementById('teacherApplicationForm');
     if (teacherForm) {
-        teacherForm.addEventListener('submit', function(e) {
+        teacherForm.addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateTeacherForm()) {
                 // Submit the form or show success message
@@ -108,11 +108,11 @@ function setupFormValidation() {
             }
         });
     }
-    
+
     // Student Registration Form Validation
     const registrationForm = document.getElementById('registrationForm');
     if (registrationForm) {
-        registrationForm.addEventListener('submit', function(e) {
+        registrationForm.addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateRegistrationForm()) {
                 // Submit the form or show success message
@@ -129,10 +129,10 @@ function setupFormValidation() {
 function validateTeacherForm() {
     const form = document.getElementById('teacherApplicationForm');
     let isValid = true;
-    
+
     // Reset all error messages
     resetFormErrors(form);
-    
+
     // Required fields validation
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
@@ -141,20 +141,20 @@ function validateTeacherForm() {
             isValid = false;
         }
     });
-    
+
     // Email validation
     const emailField = document.getElementById('teacherEmail');
     if (emailField && emailField.value && !isValidEmail(emailField.value)) {
         showFieldError(emailField, 'Please enter a valid email address');
         isValid = false;
     }
-    
+
     // Checkbox groups validation (at least one must be selected)
     const checkboxGroups = form.querySelectorAll('.checkbox-group');
     checkboxGroups.forEach(group => {
         const groupName = group.querySelector('input[type="checkbox"]').name;
         const checkedBoxes = group.querySelectorAll(`input[name="${groupName}"]:checked`);
-        
+
         if (checkedBoxes.length === 0 && group.querySelector('input[required]')) {
             const errorElem = group.closest('.form-group').querySelector('.error-message');
             if (errorElem) {
@@ -163,7 +163,7 @@ function validateTeacherForm() {
             isValid = false;
         }
     });
-    
+
     return isValid;
 }
 
@@ -174,12 +174,12 @@ function validateTeacherForm() {
 function validateRegistrationForm() {
     const form = document.getElementById('registrationForm');
     if (!form) return true; // Form doesn't exist
-    
+
     let isValid = true;
-    
+
     // Reset all error messages
     resetFormErrors(form);
-    
+
     // Required fields validation
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
@@ -188,14 +188,14 @@ function validateRegistrationForm() {
             isValid = false;
         }
     });
-    
+
     // Email validation
     const emailField = document.getElementById('parentEmail');
     if (emailField && emailField.value && !isValidEmail(emailField.value)) {
         showFieldError(emailField, 'Please enter a valid email address');
         isValid = false;
     }
-    
+
     // Check if a lesson option is selected
     const lessonOptionSelected = form.querySelector('input[name="lessonType"]:checked');
     if (!lessonOptionSelected) {
@@ -205,7 +205,7 @@ function validateRegistrationForm() {
         }
         isValid = false;
     }
-    
+
     // Check if a time slot is selected when applicable
     const groupLessonSelected = form.querySelector('input[name="lessonType"][value="group"]:checked');
     if (groupLessonSelected) {
@@ -218,7 +218,7 @@ function validateRegistrationForm() {
             isValid = false;
         }
     }
-    
+
     return isValid;
 }
 
@@ -241,16 +241,16 @@ function showFormSubmissionMessage(form, message) {
         font-weight: 500;
     `;
     successDiv.textContent = message;
-    
+
     // Add success message before the form
     form.parentNode.insertBefore(successDiv, form);
-    
+
     // Hide the form
     form.style.display = 'none';
-    
+
     // Scroll to the success message
     successDiv.scrollIntoView({ behavior: 'smooth' });
-    
+
     // Remove success message and show form after 5 seconds
     setTimeout(() => {
         successDiv.remove();
@@ -301,12 +301,12 @@ function setupPageSpecificFunctionality() {
     if (document.querySelector('.teacher-application-section')) {
         setupTeacherApplicationPage();
     }
-    
+
     // Registration Page
     if (document.querySelector('.registration-section')) {
         setupRegistrationPage();
     }
-    
+
     // Home Page
     if (document.querySelector('.hero')) {
         setupHomePage();
@@ -322,11 +322,11 @@ function setupTeacherApplicationPage() {
     checkboxGroups.forEach(group => {
         const checkboxes = group.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
+            checkbox.addEventListener('change', function () {
                 // If at least one checkbox is checked, remove required attribute from all
                 const groupName = this.name;
                 const checkedBoxes = group.querySelectorAll(`input[name="${groupName}"]:checked`);
-                
+
                 checkboxes.forEach(cb => {
                     if (checkedBoxes.length > 0) {
                         cb.removeAttribute('required');
@@ -347,16 +347,16 @@ function setupRegistrationPage() {
     const lessonTypeRadios = document.querySelectorAll('input[name="lessonType"]');
     if (lessonTypeRadios.length) {
         lessonTypeRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
+            radio.addEventListener('change', function () {
                 // Find all lesson options
                 const lessonOptions = document.querySelectorAll('.lesson-option');
                 lessonOptions.forEach(option => {
                     option.classList.remove('selected');
                 });
-                
+
                 // Add selected class to the parent option
                 this.closest('.lesson-option').classList.add('selected');
-                
+
                 // Show/hide time slots based on selected lesson type
                 const timeSlotSection = document.getElementById('timeSlotSection');
                 if (timeSlotSection) {
@@ -369,15 +369,15 @@ function setupRegistrationPage() {
             });
         });
     }
-    
+
     // Time Slot Selection
     const timeSlots = document.querySelectorAll('.time-slot');
     if (timeSlots.length) {
         timeSlots.forEach(slot => {
-            slot.addEventListener('click', function() {
+            slot.addEventListener('click', function () {
                 timeSlots.forEach(s => s.classList.remove('selected'));
                 this.classList.add('selected');
-                
+
                 // Update hidden input with selected time
                 const timeSlotInput = document.getElementById('selectedTimeSlot');
                 if (timeSlotInput) {
@@ -386,12 +386,12 @@ function setupRegistrationPage() {
             });
         });
     }
-    
+
     // Registration Type Toggle
     const registrationToggle = document.querySelectorAll('.registration-toggle input[type="radio"]');
     if (registrationToggle.length) {
         registrationToggle.forEach(radio => {
-            radio.addEventListener('change', function() {
+            radio.addEventListener('change', function () {
                 const formSections = document.querySelectorAll('.form-section');
                 formSections.forEach(section => {
                     if (section.dataset.type === this.value || !section.dataset.type) {
@@ -418,13 +418,14 @@ function setupHomePage() {
  */
 function animateBackgroundElements() {
     const notes = document.querySelectorAll('.floating-note');
-    const instruments = document.querySelectorAll('.floating-instrument');
-    
+    const instruments = document.query
+    SelectorAll('.floating-instrument');
+
     // Add random start positions to background elements
     [...notes, ...instruments].forEach(elem => {
         const randomX = Math.floor(Math.random() * 80) + 10; // 10% to 90% of viewport
         const randomY = Math.floor(Math.random() * 80) + 10; // 10% to 90% of viewport
-        
+
         elem.style.top = `${randomY}%`;
         elem.style.left = `${randomX}%`;
         elem.style.animationDelay = `${Math.random() * 20}s`; // Random delay up to 20s
