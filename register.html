@@ -118,23 +118,12 @@
                         </div>
                         <div class="form-group">
                             <label for="lessonType">Lesson Type Preference *</label>
-                            <div class="radio-group">
-                                <label class="radio-label">
-                                    <input type="radio" name="lessonType" value="group" required>
-                                    <span class="radio-custom"></span>
-                                    Group Lessons
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="lessonType" value="private" required>
-                                    <span class="radio-custom"></span>
-                                    Private Lessons
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="lessonType" value="both" required>
-                                    <span class="radio-custom"></span>
-                                    Both (we'll discuss options)
-                                </label>
-                            </div>
+                            <select id="lessonType" name="lessonTypes" required>
+                                <option value="">Select preferred lesson type</option>
+                                <option value="Group">Group Lessons</option>
+                                <option value="Private">Private Lessons</option>
+                                <option value="Both">Both (We will discuss options)</option>
+                            </select>
                             <span class="error-message"></span>
                         </div>
                     </div>
