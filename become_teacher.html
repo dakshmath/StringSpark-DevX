@@ -58,7 +58,15 @@
                 </div>
             </div>
 
-            <form class="teacher-application-form" id="teacherApplicationForm">
+            FORMSUBMIT NOT WORKING FIX THIS - ALKSJDFA;LIDFJACL;SDJFCALSKDJFAS;LKFASLKJCFA;LSKDF;LASKDJCFLDSKJFLKDSJ -
+            for the check boxes at the end it only submits when all are checked off - and for the checkboxes it only
+            outputs the last checkbox checked (5th grade and private)
+            <form action="https://formsubmit.co/ff9984201bfc35529920bfbdb6bd10b6" method="POST"
+                id="teacherApplicationForm" enctype="multipart/form-data">
+                <input type="hidden" name="_subject" value="New Teacher Request from StringSpark Become-A-Teacher Form">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
                 <div class="form-grid">
                     <!-- Personal Information -->
                     <div class="form-section">
@@ -145,9 +153,10 @@
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <label for="availability">Availability</label>
+                            <label for="availability">Availability *</label>
                             <textarea id="availability" name="availability" rows="3"
-                                placeholder="When are you typically available to teach? (e.g., weekday afternoons, Saturday mornings, etc.)"></textarea>
+                                placeholder="When are you typically available to teach? (e.g., weekday afternoons, Saturday mornings, etc.)"
+                                required></textarea>
                             <span class="error-message"></span>
                         </div>
                         <div class="form-group">
