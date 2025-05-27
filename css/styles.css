@@ -508,7 +508,15 @@ section {
     padding-right: 20px;
 }
 
-.visual-content {
+.visual-content1 {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.visual-content2 {
     position: relative;
     height: 500px;
     width: 400px;
