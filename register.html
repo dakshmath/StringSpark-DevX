@@ -33,6 +33,12 @@
                 <li><a href="register.html" class="nav-link active">Register</a></li>
                 <li><a href="become_teacher.html" class="nav-link">Become a Teacher</a></li>
             </ul>
+
+            <div class="hamburger" id="mobileNavToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
@@ -44,12 +50,16 @@
                 <p>Start your child's musical journey with String Spark today!</p>
             </div>
 
+            <!--WORKS PERFECTLY FINE-->
             <form action="https://formsubmit.co/sanjay.devxwebsites@gmail.com" method="POST" id="registrationForm"
                 enctype="multipart/form-data">
                 <input type="hidden" name="_subject"
-                    value="New Registration Request from StringSpark Registration Form">
+                    value="**New Registration** Request from StringSpark Registration Form">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="form_type" value="Student Registration">
+                <!--<input type="hidden" name="_autoresponse" value="Thank you for registering with String Spark!">-->
+
 
                 <div class="form-grid">
                     <!-- Parent/Guardian Information -->

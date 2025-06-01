@@ -16,28 +16,35 @@ document.addEventListener('DOMContentLoaded', function () {
  * Sets up mobile navigation menu toggle functionality
  */
 function setupMobileNav() {
-    // Create and append hamburger menu if it doesn't exist
     const navContainer = document.querySelector('.nav-container');
     let hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
 
-    if (!hamburger && window.innerWidth <= 768) {
-        hamburger = document.createElement('div');
+    // If hamburger doesn't exist, create it
+    if (!hamburger && navContainer) {
+        hamburger = document.createElement('button');
         hamburger.className = 'hamburger';
         hamburger.innerHTML = `
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <span></span>
+            <span></span>
+            <span></span>
         `;
         navContainer.appendChild(hamburger);
     }
 
     // Add event listener to hamburger menu
-    if (hamburger) {
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function (e) {
+            e.preventDefault();
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+
+            // Prevent body scroll when menu is open
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         });
 
         // Close menu when a nav link is clicked
@@ -45,20 +52,30 @@ function setupMobileNav() {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
         });
     }
 
     // Adjust nav on window resize
     window.addEventListener('resize', () => {
-        const navMenu = document.querySelector('.nav-menu');
         if (window.innerWidth > 768) {
             if (hamburger) hamburger.classList.remove('active');
-            if (navMenu) navMenu.classList.remove('active');
-        } else {
-            // Create hamburger if it doesn't exist and screen is mobile size
-            if (!document.querySelector('.hamburger')) {
-                setupMobileNav();
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
             }
         }
     });
@@ -418,8 +435,7 @@ function setupHomePage() {
  */
 function animateBackgroundElements() {
     const notes = document.querySelectorAll('.floating-note');
-    const instruments = document.query
-    SelectorAll('.floating-instrument');
+    const instruments = document.querySelectorAll('.floating-instrument');
 
     // Add random start positions to background elements
     [...notes, ...instruments].forEach(elem => {

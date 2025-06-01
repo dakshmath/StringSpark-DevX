@@ -510,15 +510,18 @@ section {
 
 .visual-content1 {
     position: relative;
+    margin: auto;
     height: 300px;
+    width: 500px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
 }
 
 .visual-content2 {
+    margin: auto;
     position: relative;
-    height: 500px;
+    height: 400px;
     width: 400px;
     overflow: hidden;
     border-radius: 10px;

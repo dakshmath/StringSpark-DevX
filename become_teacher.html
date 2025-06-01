@@ -33,6 +33,12 @@
                 <li><a href="register.html" class="nav-link">Register</a></li>
                 <li><a href="become_teacher.html" class="nav-link active">Become a Teacher</a></li>
             </ul>
+
+            <div class="hamburger" id="mobileNavToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
@@ -58,11 +64,15 @@
                 </div>
             </div>
 
+            <!--DOESNT SUBMIT TO ANYTHING?? OR TAKES TOO LONG-->
             <form action="https://formsubmit.co/sanjay.devxwebsites@gmail.com" method="POST" id="teacherApplicationForm"
                 enctype="multipart/form-data">
-                <input type="hidden" name="_subject" value="New Teacher Request from StringSpark Become-A-Teacher Form">
+                <input type="hidden" name="_subject"
+                    value="**New Teacher** Request from StringSpark Become-A-Teacher Form">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="form_type" value="Teacher Application">
+
 
                 <div class="form-grid">
                     <!-- Personal Information -->
