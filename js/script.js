@@ -106,8 +106,12 @@ document.addEventListener('DOMContentLoaded', function () {
      const teacherForm = document.getElementById('teacherApplicationForm');
      if (teacherForm) {
          teacherForm.addEventListener('submit', function (e) {
+             console.log('Teacher form submitted, validating...');
              if (!validateTeacherForm()) {
+                 console.log('Teacher form validation failed');
                  e.preventDefault(); // Only prevent submission if validation fails
+             } else {
+                 console.log('Teacher form validation passed - submitting to FormSubmit');
              }
              // If validation passes, let the form submit naturally to FormSubmit
          });
@@ -116,12 +120,19 @@ document.addEventListener('DOMContentLoaded', function () {
      // Student Registration Form Validation
      const registrationForm = document.getElementById('registrationForm');
      if (registrationForm) {
+         console.log('Registration form found, setting up validation');
          registrationForm.addEventListener('submit', function (e) {
+             console.log('Registration form submitted, validating...');
              if (!validateRegistrationForm()) {
+                 console.log('Registration form validation failed');
                  e.preventDefault(); // Only prevent submission if validation fails
+             } else {
+                 console.log('Registration form validation passed - submitting to FormSubmit');
              }
              // If validation passes, let the form submit naturally to FormSubmit
          });
+     } else {
+         console.log('Registration form not found on this page');
      }
  }
  
@@ -183,8 +194,8 @@ document.addEventListener('DOMContentLoaded', function () {
      // Reset all error messages
      resetFormErrors(form);
  
-     // Required fields validation
-     const requiredFields = form.querySelectorAll('[required]');
+     // Required fields validation - but skip radio buttons and checkboxes for now
+     const requiredFields = form.querySelectorAll('[required]:not(input[type="radio"]):not(input[type="checkbox"])');
      requiredFields.forEach(field => {
          if (!field.value.trim()) {
              showFieldError(field, 'This field is required');
@@ -199,17 +210,20 @@ document.addEventListener('DOMContentLoaded', function () {
          isValid = false;
      }
  
-     // Check if a lesson option is selected
-     const lessonOptionSelected = form.querySelector('input[name="lessonType"]:checked');
-     if (!lessonOptionSelected) {
-         const lessonError = document.getElementById('lessonTypeError');
-         if (lessonError) {
-             lessonError.textContent = 'Please select a lesson type';
+     // Check if a lesson option is selected (only if the elements exist)
+     const lessonTypeInputs = form.querySelectorAll('input[name="lessonType"]');
+     if (lessonTypeInputs.length > 0) {
+         const lessonOptionSelected = form.querySelector('input[name="lessonType"]:checked');
+         if (!lessonOptionSelected) {
+             const lessonError = document.getElementById('lessonTypeError');
+             if (lessonError) {
+                 lessonError.textContent = 'Please select a lesson type';
+             }
+             isValid = false;
          }
-         isValid = false;
      }
  
-     // Check if a time slot is selected when applicable
+     // Check if a time slot is selected when applicable (only if the elements exist)
      const groupLessonSelected = form.querySelector('input[name="lessonType"][value="group"]:checked');
      if (groupLessonSelected) {
          const timeSlotSelected = form.querySelector('.time-slot.selected');
@@ -220,6 +234,12 @@ document.addEventListener('DOMContentLoaded', function () {
              }
              isValid = false;
          }
+     }
+ 
+     // Debug logging to help identify issues
+     console.log('Registration form validation result:', isValid);
+     if (!isValid) {
+         console.log('Validation failed - check for error messages on the form');
      }
  
      return isValid;
