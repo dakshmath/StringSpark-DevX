@@ -1,41 +1,31 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Mobile Navigation Menu Toggle
-    setupMobileNav();
-
-    // Add animation classes to elements as they come into view
-    setupScrollAnimations();
-
-    // Add form validation for forms on the site
-    setupFormValidation();
-
-    // Setup specific page functionality
-    setupPageSpecificFunctionality();
+   // Mobile Navigation Menu Toggle
+   setupMobileNav();
+    
+   // Add form validation for the registration form
+   setupFormValidation();
+   
+   // Add animation classes to elements as they come into view
+   setupScrollAnimations();
+   
+   // Setup page-specific functionality
+   setupPageSpecificFunctionality();
 });
+
 
 /**
  * Sets up mobile navigation menu toggle functionality
  */
 function setupMobileNav() {
-    const navContainer = document.querySelector('.nav-container');
-    let hamburger = document.querySelector('.hamburger');
+    const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
-    // If hamburger doesn't exist, create it
-    if (!hamburger && navContainer) {
-        hamburger = document.createElement('button');
-        hamburger.className = 'hamburger';
-        hamburger.innerHTML = `
-            <span></span>
-            <span></span>
-            <span></span>
-        `;
-        navContainer.appendChild(hamburger);
-    }
-
-    // Add event listener to hamburger menu
     if (hamburger && navMenu) {
+        // Add click event to hamburger menu
         hamburger.addEventListener('click', function (e) {
             e.preventDefault();
+            
+            // Toggle active classes
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
 
@@ -58,27 +48,25 @@ function setupMobileNav() {
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function (event) {
-            const isClickInsideNav = navMenu.contains(event.target);
-            const isClickOnHamburger = hamburger.contains(event.target);
+            const navbar = document.querySelector('.navbar');
+            const isClickInsideNav = navbar.contains(event.target);
 
-            if (!isClickInsideNav && !isClickOnHamburger && navMenu.classList.contains('active')) {
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu on window resize if screen becomes larger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
     }
-
-    // Adjust nav on window resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            if (hamburger) hamburger.classList.remove('active');
-            if (navMenu) {
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        }
-    });
 }
 
 /**
